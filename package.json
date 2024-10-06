@@ -1,0 +1,70 @@
+{
+    "name": "example-extension",
+    "displayName": "Example Extension",
+    "description": "This is an example extension",
+    "version": "1.0.0",
+    "publisher": "AlexAyers",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alexayers/vscode_example_extension"
+    },
+    "author": {
+        "name": "Alex Ayers",
+        "email": "me@alexayers.com"
+    },
+    "contributors": [],
+    "engines": {
+        "vscode": "^1.88.0"
+    },
+    "icon": "images/icon.png",
+    "categories": [
+        "Testing"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "viewsContainers": {},
+        "views": {},
+        "commands": [
+            {
+                "command": "example-extension.ping",
+                "title": "Example Extension: Ping"
+            }
+        ]
+    },
+    "eslintConfig": {
+        "parser": "@typescript-eslint/parser",
+        "plugins": [
+            "@typescript-eslint"
+        ],
+        "extends": [
+            "plugin:@typescript-eslint/recommended"
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "format:write": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+        "format:check": "prettier --ignore-path .gitignore --check \"**/*.+(js|ts|json)\"",
+        "pretest": "npm run compile && npm run lint",
+        "package": "mkdir -p dist/ && npx @vscode/vsce package --out dist/example-extension.vsix",
+        "lint": "eslint src --ext ts",
+        "test": "mocha -r ts-node/register 'src/test/**/*.ts'"
+    },
+    "devDependencies": {
+        "@types/mocha": "^10.0.6",
+        "@types/node": "^20.12.7",
+        "@types/vscode": "^1.73.0",
+        "@typescript-eslint/eslint-plugin": "^6.7.0",
+        "@typescript-eslint/parser": "^6.7.0",
+        "eslint": "^8.26.0",
+        "prettier": "^3.2.5",
+        "typescript": "^5.4.2"
+    },
+    "dependencies": {
+        "@vscode/vsce": "^2.26.0"
+    }
+}
